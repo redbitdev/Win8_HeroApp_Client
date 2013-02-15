@@ -1,0 +1,73 @@
+﻿/*  derived from font awesome    */
+
+@font-face {
+  font-family: "MapSymbols";
+  src: url("/font/mapSymbols.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*  Font Awesome styles
+    ------------------------------------------------------- */
+[class^="map-icon-"]:before, [class*=" map-icon-"]:before {
+  font-family: MapSymbols;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+a [class^="map-icon-"], a [class*=" map-icon-"] {
+  display: inline-block;
+  text-decoration: inherit;
+}
+/* makes the font 33% larger relative to the icon container */
+.map-icon-large:before {
+  vertical-align: top;
+  font-size: 1.3333333333333333em;
+}
+.btn [class^="map-icon-"], .btn [class*=" map-icon-"] {
+  /* keeps button heights with and without icons the same */
+
+}
+li [class^="map-icon-"], li [class*=" map-icon-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+li .map-icon-large[class^="map-icon-"], li .map-icon-large[class*=" map-icon-"] {
+  /* 1.5 increased font size for icon-large * 1.25 width */
+
+  width: 1.875em;
+}
+li[class^="map-icon-"], li[class*=" map-icon-"] {
+  margin-left: 0;
+  list-style-type: none;
+}
+li[class^="map-icon-"]:before, li[class*=" map-icon-"]:before {
+  text-indent: -2em;
+  text-align: center;
+}
+li[class^="map-icon-"].map-icon-large:before, li[class*=" map-icon-"].map-icon-large:before {
+  text-indent: -1.3333333333333333em;
+}
+/*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons */
+.map-icon-route:before                { content: "\E003"; }
+.map-icon-bear-left:before            { content: "\E025"; }
+.map-icon-bear-right:before           { content: "\E026"; }
+.map-icon-round-about:before          { content: "\E027"; }
+.map-icon-exit-left:before            { content: "\E031"; }
+.map-icon-exit-right:before           { content: "\E032"; }
+.map-icon-keep-left:before            { content: "\E033"; }
+.map-icon-keep-right:before           { content: "\E034"; }
+.map-icon-straight:before             { content: "\E035"; }
+.map-icon-merge:before                { content: "\E036"; }
+.map-icon-unknown:before              { content: "\E037"; }
+.map-icon-unknown1:before             { content: "\E038"; }
+.map-icon-straight1:before            { content: "\E035"; }
+.map-icon-turn-left:before            { content: "\E042"; }
+.map-icon-turn-right:before           { content: "\E043"; }
+.map-icon-u-turn-left:before          { content: "\E044"; }
+.map-icon-u-turn-right:before         { content: "\E045"; }
+.map-icon-start-point:before          { content: "\E242"; }
+.map-icon-end-point:before            { content: "\E243"; }

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>settings</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="settings.css" rel="stylesheet" />
+    <script src="settings.js"></script>
+</head>
+<body>
+    <!-- BEGINTEMPLATE: Template code for an empty Settings Flyout. -->
+    <!-- Each settings flyout should be defined in its own HTML file. -->
+    <!-- Set the width to 'narrow' for a narrow settings flyout. -->
+    <!-- Set the background color for the header to the background color defined for your
+             app tile in the manifest. -->
+    <div id="settingsDiv" data-win-control="WinJS.UI.SettingsFlyout" aria-label="settings flyout">
+        <div class="win-header backgroundColor foregroundColor">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton win-backbutton-settings">
+            </button>
+            <div class="win-label">Options</div>
+            <!--<img src="/images/smallLogo.png" style="position: absolute; right: 40px;" />-->
+        </div>
+        <br>
+        <div class="win-content win-ui-dark">
+			<div class="win-settings-section">
+				<h3>Distance</h3>
+				<div>
+                    Show distance in
+                </div>
+				<div class="group">
+					<input type="radio" name="uom" id="miles" />
+					<label for="miles">Miles</label>
+				</div>
+				<div class="group">
+					<input type="radio" name="uom" id="km" checked="true"/>
+					<label for="km">Kilometers</label>
+				</div>
+			</div>
+        </div>
+    </div>
+    <!-- ENDTEMPLATE -->
+</body>
+</html>

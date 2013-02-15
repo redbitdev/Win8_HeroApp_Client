@@ -1,0 +1,148 @@
+﻿/* Main styles for details view */
+.details a p {
+    margin-left: 120px;
+}
+
+.details .pane {
+    width: 700px;
+}
+
+#detailImg {
+    padding: 8px;
+    max-width: 600px;
+}
+.details {
+    -ms-grid-rows: auto 1fr;
+    background-color: whitesmoke;
+    position: relative;
+    visibility: hidden;
+    -ms-grid-row: 1;
+
+}
+
+    .details .title-header {
+        display: -ms-grid;
+        -ms-grid-columns: 120px 1fr;
+        padding-bottom: 20px;
+        color: black;
+        
+    }
+
+    .details .win-backbutton {
+        -ms-grid-column: 1;
+        margin-left: 39px;
+        margin-top: 52px;
+    }
+
+    .details .title {
+        -ms-grid-column: 2;
+        margin-left: 0px;
+        margin-top: 37px;
+    }
+
+.details #detailsMain {
+    display: -ms-flexbox;
+    -ms-flex-align: stretch;
+        overflow-y:hidden;
+    overflow-x:scroll;
+}
+
+.details #map {
+    width: 600px;
+}
+
+.details #mapDivImage {
+    position: relative;
+    height: 500px;
+    width: 600px;
+    margin: 25px 0 0 0;
+}
+
+.details #address {
+    margin: 5px 0 0 0;
+}
+
+.details article {
+    margin-left:120px;
+}
+
+    .details article.pane {
+        margin-left: 30px;
+        padding-left: 0;
+    }
+
+.details h2, #infoDiv {
+    margin-left: 0;
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+
+    .details #detailsMain {
+        display: -ms-flexbox;
+        -ms-flex-align: stretch;
+        -ms-flex-direction: column;
+    }
+
+    .details article {
+        padding-bottom: 24px;
+    }
+}
+
+@media screen and (-ms-view-state: snapped) {
+
+    .details .title-header {
+        -ms-grid-columns: 12px 1fr;
+    }
+
+    .details #detailsMain {
+        display: -ms-flexbox;
+        -ms-flex-align: stretch;
+        -ms-flex-direction: column;
+        overflow-y:scroll;
+        overflow-x:hidden;
+    }
+
+    .details #detailsMain {
+        height: 92%;
+    }
+
+    .details article {
+        margin-left:15px;
+        padding-bottom: 20px;
+    }
+        .details article.pane {
+            margin-left: 15px;
+        }
+
+    .details #map {
+        width: 94%;
+        padding-left:0px;
+    }
+
+    .details #mapDivImage {
+        position: relative;
+        height: 450px;
+        width: 275px;
+        margin: 0;
+        overflow:hidden;
+    }
+
+    .details h2, #infoDiv {
+        margin-left: 0px;
+    }
+
+    .details #address {
+        margin: 5px 0 0 0px;
+    }
+
+    .details .win-backbutton {
+        margin-top: 22px;
+        margin-left:10px;
+    }
+
+    .details .title {
+        -ms-grid-column: 2;
+        margin-left: 45px;
+        margin-top: 19px;
+    }
+}

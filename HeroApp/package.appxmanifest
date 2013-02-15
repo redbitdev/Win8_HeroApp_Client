@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="c4be79bb-ec1a-4a7d-8d51-3e9bf0dc9836" Version="1.0.0.0" Publisher="CN=Barranger" />
+  <Properties>
+    <DisplayName>Hero App Template</DisplayName>
+    <PublisherDisplayName>RedBit Development</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Hero App Template" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Windows 8 Template app used to applications to track issues in the community, school, work or where every you feel issue tracking is required." ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="images\splashscreen.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="location" />
+  </Capabilities>
+</Package>

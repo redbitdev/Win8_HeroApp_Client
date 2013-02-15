@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>searchLocation</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="searchLocation.css" rel="stylesheet" />
+    <script src="searchLocation.js"></script>
+</head>
+<body>
+    <!-- BEGINTEMPLATE: Template code for an empty Settings Flyout. -->
+    <!-- Each settings flyout should be defined in its own HTML file. -->
+    <!-- Set the width to 'narrow' for a narrow settings flyout. -->
+    <!-- Set the background color for the header to the background color defined for your
+             app tile in the manifest. -->
+    <div id="searchLocation" data-win-control="WinJS.UI.SettingsFlyout" aria-label="search location flyout" data-win-options="{settingsCommandId:'searchLocation'}">
+        <div class="win-settings-section" style="display: -ms-grid;">
+				<div class="win-type-x-large labelLocation">Search Location</div>
+				<input type="text" placeholder="My Location" id="textLocation">
+                <button id="buttonSearch">Search</button>
+                <div data-win-control="WinJS.UI.ListView" id="resultsView">
+
+                </div>
+            </div>
+    </div>
+</body>
+</html>

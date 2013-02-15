@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>About</title>
+        <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="aboutflyout.css" rel="stylesheet" />
+    <script src="aboutflyout.js"></script>
+</head>
+<body>
+     <!-- BEGINSETTINGSFLYOUT -->
+    <div id="about" data-win-control="WinJS.UI.SettingsFlyout" aria-label="About settings flyout">
+        <div class="win-header backgroundColor foregroundColor">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton win-backbutton-settings">
+            </button>
+            <div class="win-label">About </div>
+            <!--<img src="/images/smallLogo.png" style="position: absolute; right: 40px;" />-->
+        </div>
+        <br>
+        <div class="win-content">
+            <img src="/images/logo.png" />
+            <div class="win-type-x-large"><span data-win-bind="innerText:Finder.Config.appName"></span></div>
+            <div class="win-type-medium version"><span data-win-bind="innerText:Finder.Config.versionFriendly"></span></div>
+            <div class="win-type-medium"><span data-win-bind="innerText:Finder.Config.copyright"></span></div>
+            <br>
+            <div class="win-label">Contact Us</div>
+            <div><span data-win-bind="innerHTML:Finder.Config.contactUsText"></span></div>
+        </div>
+    </div>
+    <!-- ENDSETTINGSFLYOUT -->
+</body>
+</html>

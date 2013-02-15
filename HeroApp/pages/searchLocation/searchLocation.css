@@ -1,0 +1,38 @@
+﻿#searchLocation  {
+    background-color: #3A3A3A;
+}
+
+#searchLocation label {
+	 float:right; 
+	 width: 210px; 
+	 clear:none; 
+	 display:block; 
+	 padding: 2px 1em 0 0; 
+}
+
+    #searchLocation .win-header,
+    #searchLocation .win-content {
+        background-color: #3A3A3A;
+    }
+
+	#searchLocation .win-content {
+		margin-top: -40px;
+	}
+	
+    #searchLocation p {
+        margin-left: 120px;
+    }
+
+    #searchLocation a {
+        color: white;
+    }
+
+	#searchLocation .group{
+		margin-top:8px;
+	}
+	#searchLocation .win-content h2{
+		margin-top:30px;
+		margin-bottom:10px;
+	}
+	
+	

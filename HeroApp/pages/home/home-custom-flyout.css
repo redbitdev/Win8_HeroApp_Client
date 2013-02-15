@@ -1,0 +1,76 @@
+﻿.custom-flyout {
+    -ms-grid-column:2;
+	-ms-grid-columns: auto 1fr;
+	-ms-grid-rows: auto 1fr;
+    display:-ms-grid;
+	height: 100%;
+	background-color: white;
+	position: fixed;
+    right: 0px;
+    top: 0px;
+	opacity: 0;
+    visibility: hidden;
+}
+
+    .custom-flyout .title-header .win-backbutton {
+        width: 30px;
+        height: 30px;
+        font-size: 10pt;
+        line-height: 26px; /* line-height must match the content box height */
+        vertical-align: -0.37em;
+        -ms-grid-row-align: center;
+    }
+
+    .custom-flyout .title-header {
+        display: -ms-grid;
+        -ms-grid-columns: auto 1fr;
+        -ms-grid-column: 2;
+        padding: 10px;
+        color: black;
+    }
+
+        .custom-flyout .title-header .title {
+            -ms-grid-column: 2;
+            margin-left: 10px;
+        }
+
+/* Styles for custom flyout */
+#categorySelect {
+    width: 96%;
+    margin-top: 16px;
+}
+.custom-flyout {
+    -ms-grid-column:2;
+	-ms-grid-columns: auto 1fr;
+	-ms-grid-rows: auto 1fr;
+    display:-ms-grid;
+	height: 100%;
+	background-color: white;
+	position: fixed;
+    right: 0px;
+    top: 0px;
+	opacity: 0;
+    visibility: hidden;
+}
+
+    .custom-flyout .title-header .win-backbutton {
+        width: 30px;
+        height: 30px;
+        font-size: 10pt;
+        line-height: 26px; /* line-height must match the content box height */
+        vertical-align: -0.37em;
+        -ms-grid-row-align: center;
+    }
+
+    .custom-flyout .title-header {
+        display: -ms-grid;
+        -ms-grid-columns: auto 1fr;
+        -ms-grid-column: 2;
+        padding: 10px;
+        color: black;
+    }
+
+        .custom-flyout .title-header .title {
+            -ms-grid-column: 2;
+            margin-left: 10px;
+        }

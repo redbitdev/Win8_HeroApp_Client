@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>FinderApp</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <!-- Default CSS files -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/css/appbar.css" rel="stylesheet" />
+    <link href="/css/mapSymbols.css" rel="stylesheet" />
+    <link href="/pages/home/home-searchResults.css" rel="stylesheet" />
+
+    <!-- Helper includes -->
+    <script src="/js/RedBit.String.js"></script>
+    <script src="/js/RedBit.Windows.js"></script>
+    <script src="/js/RedBit.Windows.jQuery.js"></script>
+    <script src="/js/RedBit.Settings.js"></script>
+    <script src="/js/formatter.js"></script>
+
+    <!-- Configuration of the Finder App -->
+    <script src="/js/config.js"></script>
+
+    <!-- Data Service -->
+    <script src="/js/data.js"></script>
+    <script src="/js/geo.js"></script>
+    <script src="/js/auth.js"></script>
+
+    <!-- Default js fiels -->
+    <script src="/js/default.js"></script>
+    <script src="/js/navigator.js"></script>
+    <script src="/pages/home/home.searchResults.js"></script>
+
+
+    
+</head>
+<body>
+    <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/home/home.html'}"></div>
+
+    <!-- UI TO SHOW PROGRESS -->
+    <div id="progressDisplay" data-win-design-hidden="true">
+        <div class="transparent"></div>
+        <div class="progressContent">
+            <p class="win-type-x-large">Signing in</p>
+            <progress class="win-large"></progress>
+        </div>
+    </div>
+
+	<div class="progressDisplayEdge">
+            <progress class="win-large"></progress>
+            <p class="win-type-medium">Getting your location ...</p>
+    </div>
+    <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
+    </div> -->
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿.win-appbar button[id=cmdLocation] span span:before {
+    content:"\E013";
+}
+
+.win-appbar button[id=cmdMapStyle] span span:before {
+    content:"\E011";
+}
+
+.win-appbar button[id=cmdDirections] span span:before {
+    content:"\E003";
+}
+
+
+.win-appbar button[id=cmdLocation] span span,
+.win-appbar button[id=cmdMapStyle] span span,
+.win-appbar button[id=cmdDirections] span span{
+    font-family:MapSymbols;
+    line-height:40px;
+    font-size: 18pt;
+
+}

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>homePage</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <!-- home css file -->
+    <link href="/pages/home/home.css" rel="stylesheet" />
+    <link href="/pages/home/home-directions.css" rel="stylesheet" />
+    <link href="/pages/home/home-details.css" rel="stylesheet" />
+    <link href="/pages/home/home-custom-flyout.css" rel="stylesheet" />
+    <link href="/pages/home/home-searchResults.css" rel="stylesheet" />
+
+    <!-- Bing maps references -->
+    <script type="text/javascript" src="ms-appx:///Bing.Maps.JavaScript//js/veapicore.js"></script>
+    <script type="text/javascript" src="ms-appx:///Bing.Maps.JavaScript//js/veapimodules.js"></script>
+
+    <script src="///LiveSDKHTML/js/wl.js"></script>
+
+    <!-- Configuration of the Finder App -->
+    <script src="/js/config.js"></script>
+
+    <!-- Data Service -->
+    <script src="/js/data.js"></script>
+    <script src="/js/geo.js"></script>
+    <script src="/js/auth.js"></script>
+
+    <!-- home js file -->
+    <script src="home.variables.js"></script>
+    <script src="home.directions.js"></script>
+    <script src="home.details.js"></script>
+    <script src="home.issues.js"></script>
+    <script src="home.js"></script>
+
+</head>
+<body>
+    <!-- template for the directions list -->
+    <div id="directionItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="directionItem">
+            <i data-win-bind="className: iconName"></i>
+            <div class="directionDetail">
+                <div class="header" data-win-bind="innerText: header">Route</div>
+                <div class="subHeader" data-win-bind="innerText: subHeader">37.4 km, 27 mins</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- template for search results -->
+    <div id="resultTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="win-type-large result" data-win-bind="innerText:name"></div>
+    </div>
+
+    <!-- Template for data list view  -->
+    <div id="rowTemplate"
+        data-win-control="WinJS.Binding.Template">
+        <div class="item">
+            <img class="item-image" src="#" data-win-bind="src: img_url; alt: name" />
+            <div class="item-info">
+                <h3 class="item-title win-type-ellipsis" data-win-bind="textContent: name"></h3>
+                <h6 class="item-description" data-win-bind="textContent: secondary"></h6>
+                <h7 class="item-comments win-type-xx-small"><span data-win-bind="textContent: commentLength">?</span> Comments</h7>
+                <div class="item-distance win-type-xx-small" data-win-bind="innerText: distanceFriendly"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Template for data list view  -->
+    <div id="commentTemplate"
+        data-win-control="WinJS.Binding.Template">
+        <div class="comment-item">
+            <img class="profile-pic" src="#" data-win-bind="src: userProfilePicUrl; alt: name" />
+            <div class="item-info">
+                <h3 class="item-title win-type-ellipsis" data-win-bind="textContent: text"></h3>
+                <img class="inline-img" data-win-bind="src: imgUrl; style.display: imgUrl visibleIfNotNull" />
+                <h6 class="item-description" data-win-bind="textComment: author"></h6>
+            </div>
+        </div>
+    </div>
+
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment homepage">
+        <!-- Main map section -->
+        <section id="main" aria-label="Main content" role="main">
+            <div id="mapdiv"></div>
+            <div id="listList" class="win-ui-light" data-win-control="WinJS.UI.ListView" data-win-options="{
+                itemDataSource : Locations.locationList.dataSource, 
+                itemTemplate: select('#rowTemplate')}">
+            </div>
+        </section>
+
+        <!-- Directions div -->
+        <div class="win-ui-light directionsDiv custom-flyout">
+
+            <div class="title-header">
+                <button type="button" class="win-backbutton"></button>
+                <div class="win-type-x-large title">Directions</div>
+            </div>
+            <div class="directionsDetails" id="directionsDetails" data-win-control="WinJS.UI.ListView"
+                data-win-options="{itemTemplate:select('#directionItemTemplate'), 
+			selectionMode: 'none',
+			layout: {type: WinJS.UI.ListLayout}}">
+            </div>
+
+            <div class="directionsDisclaimer win-type-xx-small">
+                No guarantee is made regarding accuracy of these directions for any reason, including contruction, projects, traffic or other events.  For informational purposes only.
+            </div>
+        </div>
+
+        <!-- New comment div -->
+        <div id="newComment" class="win-ui-light custom-flyout">
+            <div class="title-header">
+                <button type="button" id="newCommentHide" class="win-backbutton"></button>
+                <div class="win-type-x-large title">New Comment</div>
+            </div>
+            <div class="win-settings-section">
+                <input type="text" placeholder="Title" id="txtTitle">
+                <img id="previewComment" class="previewImage" />
+                <button id="newCommentImageButton">Select an image...</button><br />
+                <button id="newCommentButton">Submit Comment</button>
+            </div>
+        </div>
+
+        <!-- New issue div -->
+        <div id="newIssue" class="win-ui-light custom-flyout">
+            <div class="title-header">
+                <button type="button" id="newIssueHide" class="win-backbutton"></button>
+                <div class="win-type-x-large title">New Issue</div>
+            </div>
+            <div class="win-settings-section">
+                <input type="hidden" id="command" value="new" />
+                <input type="hidden" id="_id" value="" />
+                <input type="text" placeholder="Title" id="newIssueTitle">
+                <img id="previewIssue" class="previewImage" />
+                <button id="newIssueImageButton">Select an image...</button>
+                <button id="pickLocationButton">Select a location...</button>
+                <select id="categorySelect"></select>
+                <textarea id="newIssueDesc" placeholder="Details"></textarea>
+                <button id="newIssueButton">Submit Issue</button>
+            </div>
+        </div>
+
+        <!-- Details View -->
+        <div id="pageDetails" class="win-ui-light details">
+            <div class="title-header">
+                <button type="button" class="win-backbutton"></button>
+                <h1 class="win-type-ellipses title">List Details</h1>
+            </div>
+            <section aria-label="Main content" role="main" id="detailsMain">
+
+                <article id="map">
+                    <h2>Address</h2>
+                    <h4 id="address"></h4>
+                    <div id="mapDivImage"></div>
+                </article>
+                <article id="info" class="pane">
+                    <h2>Details</h2>
+                    <div id="infoDiv"></div>
+                </article>
+                <article id="img" class="pane">
+                    <h2>Image</h2>
+                    <img id="detailImg" />
+                </article>
+                <article id="comments" class="pane">
+                    <h2>Comments</h2>
+                    <div id="commentDiv">
+                        <p>No Comments yet</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- The content that will be loaded and displayed. -->
+        <div class="searchResults fragment">
+            <div id="header">
+                <button class="win-backbutton" aria-label="Back" type="button"></button>
+                <div class="titlearea">
+                    <h1 class="pagetitle win-type-ellipsis"></h1>
+                    <h2 class="pagesubtitle win-type-ellipsis"></h2>
+                </div>
+            </div>
+            <section aria-label="Main content" role="main">
+                <div class="resultsmessage win-type-x-large">No results match your search.</div>
+                <div class="filterarea">
+                    <ul class="filterbar"></ul>
+                    <select class="filterselect"></select>
+                </div>
+                <div class="resultslist win-selectionstylefilled" aria-label="Search results" data-win-control="WinJS.UI.ListView" data-win-options="{ selectionMode: 'none' }"></div>
+            </section>
+        </div>
+
+        <div id="sortFlyout" data-win-control="WinJS.UI.Menu"> 
+            <button data-win-control="WinJS.UI.MenuCommand" id="sortName">Name</button> 
+            <button data-win-control="WinJS.UI.MenuCommand" id="sortDistance">Distance</button> 
+            <button data-win-control="WinJS.UI.MenuCommand" id="sortDescription">Description</button>             
+        </div> 
+
+        <!-- App Bar -->
+        <div id="detailsAppBar" data-win-control="WinJS.UI.AppBar">
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdNewComment', icon: 'comment', label:'Comment',section:'selection'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdDelete', icon: 'remove', label:'Delete',section:'selection'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdUpdate', icon: 'add', label:'Update',section:'selection'}">
+            </button>
+        </div>
+        <div id="appBar" data-win-control="WinJS.UI.AppBar">
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdNewIssue', icon: 'add', label:'New Issue',section:'selection'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdSort', icon: 'sort', label:'Sort',section:'selection',type:'flyout', flyout: 'sortFlyout'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdMyIssues', icon: 'filter', label:'My Issues',section:'selection'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdDirections',label:'Directions',section:'selection'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdLogin',label:'Login',icon:'contact',section:'global',tooltip:'Login'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdLocation',label:'My location',section:'global'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdSearchLocation',label:'Search Location',icon:'mappin',section:'global',tooltip:'Search Location'}">
+            </button>
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdRefreshList',icon: 'refresh', label:'Refresh list',section:'global'}">
+            </button>
+
+            <button
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmdClearListFilter',label:'Clear Filter',icon:'clear',section:'global',tooltip:'Sort', hidden: true}">
+            </button>
+        </div>
+
+        <!-- Upper App Bar -->
+        <div id="appBarUpper" data-win-control="WinJS.UI.AppBar" aria-label="Navigation Bar"
+            data-win-options="{layout:'custom',placement:'top'}">
+            <header aria-label="Navigation bar" role="banner" id="appBarUpperHeader">
+                <button class="win-backbutton" aria-label="Back"></button>
+                <h1 class="appBarTitleArea win-type-ellipsis">
+                    <span id="title" class="pagetitle" data-win-bind="innerText: Finder.Config.appName"></span>
+                </h1>
+            </header>
+        </div>
+    </div>
+</body>
+</html>

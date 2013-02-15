@@ -1,0 +1,52 @@
+﻿#settingsDiv  {
+    background-color: #3A3A3A;
+}
+
+#settingsDiv label {
+	 float:right; 
+	 width: 210px; 
+	 clear:none; 
+	 display:block; 
+	 padding: 2px 1em 0 0; 
+}
+
+    #settingsDiv .win-header,
+    #settingsDiv .win-content {
+        background-color: #3A3A3A;
+    }
+
+	#settingsDiv .win-content {
+		margin-top: -40px;
+	}
+	
+    #settingsDiv p {
+        margin-left: 120px;
+    }
+
+    #settingsDiv a {
+        color: white;
+    }
+
+	#settingsDiv .group{
+		margin-top:8px;
+	}
+	#settingsDiv .win-content h2{
+		margin-top:30px;
+		margin-bottom:10px;
+	}
+	
+	#settingsDiv #stationCount,
+	#settingsDiv #radius{
+		margin:0px;
+		padding:0px 0px 10px 0px;
+	}
+	
+	#settingsDiv input[type=range]::-ms-fill-lower {
+		background-color: rgb(0, 130, 135); /* same in dark and light */
+	}
+	#settingsDiv input[type=range]:hover::-ms-fill-lower {
+		background-color: rgb(33, 146, 151); /* same in dark and light */
+	}
+	#settingsDiv input[type=range]:active::-ms-fill-lower {
+		background-color: rgb(37, 187, 196); /* same in dark and light */
+	}
